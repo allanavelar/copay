@@ -1,0 +1,25 @@
+page-feedback-card {
+  .message-content {
+    .title-container {
+      align-items: center;
+    }
+  }
+  .icon-svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > img {
+      background-repeat: no-repeat;
+      background-clip: padding-box;
+      background-size: contain;
+      height: 4.4rem;
+      margin-bottom: 5px;
+    }
+  }
+  .icons-row {
+    padding: 2.2rem 0;
+  }
+  .opacity-low {
+    opacity: 0.42;
+  }
+}

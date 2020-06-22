@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "lib": ["dom", "es2015", "es2017"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "target": "es6",
+    "baseUrl": "./"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"],
+  "compileOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  },
+  "types": ["lodash", "node", "chrome"]
+}

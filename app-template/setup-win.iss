@@ -5,7 +5,7 @@
 #define MyAppVersion "*VERSION*"
 #define MyAppPublisher "BitPay"
 #define MyAppURL "*URL*"
-#define MyAppExeName "*PACKAGENAME*.exe"
+#define MyAppExeName "*USERVISIBLENAME*.exe"
 #define AppId "*WINDOWSAPPID*"
 
 [Setup]
@@ -19,7 +19,7 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
-OutputBaseFilename=*PACKAGENAME*-win
+OutputBaseFilename=*USERVISIBLENAME*
 OutputDir=./
 Compression=lzma
 SolidCompression=yes
@@ -33,9 +33,9 @@ Name: "spanish"; MessagesFile: "compiler:Languages\Spanish.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "*PACKAGENAME*\win64\*PACKAGENAME*.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "*PACKAGENAME*\win64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "../www/img/icons/favicon.ico"; DestDir: "{app}"; DestName: "icon.ico"; Flags: ignoreversion
+Source: "*USERVISIBLENAME*\win64\*USERVISIBLENAME*.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "*USERVISIBLENAME*\win64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "../www/assets/img/app/logo.ico"; DestDir: "{app}"; DestName: "icon.ico"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -50,6 +50,11 @@ Root: HKCR; Subkey: "bitcoin"; ValueType: "string"; ValueData: "URL:Bitcoin Cust
 Root: HKCR; Subkey: "bitcoin"; ValueType: "string"; ValueName: "URL Protocol"; ValueData: ""
 Root: HKCR; Subkey: "bitcoin\DefaultIcon"; ValueType: "string"; ValueData: "{app}\{#MyAppExeName},0"
 Root: HKCR; Subkey: "bitcoin\shell\open\command"; ValueType: "string"; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
+
+Root: HKCR; Subkey: "bitcoincash"; ValueType: "string"; ValueData: "URL:Bitcoin Cash Custom Protocol"; Flags: uninsdeletekey
+Root: HKCR; Subkey: "bitcoincash"; ValueType: "string"; ValueName: "URL Cash Protocol"; ValueData: ""
+Root: HKCR; Subkey: "bitcoincash\DefaultIcon"; ValueType: "string"; ValueData: "{app}\{#MyAppExeName},0"
+Root: HKCR; Subkey: "bitcoincash\shell\open\command"; ValueType: "string"; ValueData: """{app}\{#MyAppExeName}"" ""%1"""
 
 Root: HKCR; Subkey: "*APPURI*"; ValueType: "string"; ValueData: "URL:*USERVISIBLENAME* Custom Protocol"; Flags: uninsdeletekey
 Root: HKCR; Subkey: "*APPURI*"; ValueType: "string"; ValueName: "URL Protocol"; ValueData: ""

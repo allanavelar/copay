@@ -1,0 +1,50 @@
+<wide-header-page title="{{'Send to' | translate}}">
+  <ion-buttons right *ngIf="showOptions(wallet?.coin)">
+    <button wide-header-bar-button clear class="option-button" (click)="showMoreOptions()" ion-button icon-only>
+      <ion-icon name="ios-more" md="ios-more"></ion-icon>
+    </button>
+  </ion-buttons>
+  <div page-content>
+    <div class="prompt-user-fullscreen-container" *ngIf="shouldShowZeroState()">
+      <div>
+        <div class="prompt-user">
+          <div class="title-icon larger-icon">
+            <img src="assets/img/ghost-straight-face.svg" />
+          </div>
+          <div class="title-info">
+            <span translate>Mmm...</span>
+          </div>
+          <div class="subtitle-info" *ngIf="wallet.coin !== 'xrp'; else minXrp">
+            <span translate>It appears that you do not have any money to send.</span>
+          </div>
+        </div>
+
+        <ng-template #minXrp>
+          <div class="subtitle-info">
+            <p translate>You need a minimum of 20 XRP to send funds.</p>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div *ngIf="!shouldShowZeroState()">
+      <div *ngIf="hasWallets">
+        <div class="send-header-wrapper">
+          <ion-item class="search-wrapper" [ngClass]="{'invalid': invalidAddress && search != ''}">
+            <ion-input placeholder="{{'Search contact or enter address' | translate}}" [(ngModel)]="search" (ngModelChange)="processInput()"></ion-input>
+            <ion-icon *ngIf="invalidAddress && search != ''" item-end class="backspace-icon" name="backspace" (click)="cleanSearch()"></ion-icon>
+            <ion-icon item-end class="scan-icon" (click)="openScanner()">
+              <img src="assets/img/scan-ico.svg">
+            </ion-icon>
+          </ion-item>
+        </div>
+
+        <page-transfer-to [wallet]="wallet" [searchInput]="search" [useAsModal]="false" [fromWalletDetails]="true" #transferTo></page-transfer-to>
+
+      </div>
+      <div *ngIf="!hasWallets" class="no-wallet-message">
+        <span translate>To get started, you'll need to create a wallet and get some funds.</span>
+      </div>
+    </div>
+  </div>
+</wide-header-page>

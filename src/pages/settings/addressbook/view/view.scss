@@ -1,0 +1,17 @@
+page-addressbook-view {
+  .contact-view-header {
+    margin: 20px auto;
+    width: 100px;
+    padding: 10px;
+  }
+  .btn-send {
+    color: color($colors, primary);
+  }
+  .btn-remove {
+    color: color($colors, danger);
+  }
+  .comment {
+    color: color($colors, grey);
+    padding-top: 10px;
+  }
+}
